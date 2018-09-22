@@ -1,4 +1,21 @@
 .mainnav li{
     display:inline-block;
-    width: 100px;}
+    width: 100px;
+    text-decoration: none;
+    color: black;
+}
 
+a:link{
+    color: black;
+    text-decoration: none;
+}
+
+a:visited{
+    color: green;
+    text-decoration: none;
+}
+
+a:hover{
+    color: red;
+    text-decoration: none;
+}
