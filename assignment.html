@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS Assignment</title>
+    <style>
+        canvas{
+            border: gray 2px solid;
+        }
+    </style>
+</head>
+<body>
+   <canvas id="my_canvas"></canvas>
+   <script>
+       var canvas = document.getElementById('my_canvas');
+        var ctx = canvas.getContext('2d');
+        var color = "black";
+        canvas.width = 800;
+        canvas.height = 500;
+
+        canvas.onmousedown = function(e){
+            ctx.beginPath();
+            ctx.moveTo(e.pageX, e.pageY);
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 10;
+            ctx.lineCap = "round";
+            ctx.lineJoin = "round";
+            
+            canvas.onmousemove = function(e){
+                ctx.lineTo(e.pageX, e.pageY);
+                ctx.stroke();
+            }
+            canvas.onmouseup = function(e){
+                ctx.closePath();
+                canvas.onmousemove = null;
+                canvas.onmouseup = null;
+            }
+        }
+
+        document.addEventListener('keydown', check, false);
+
+        function check(e){
+            if (e.keyCode == '66'){
+                color = 'blue'
+            }
+
+            if (e.keyCode == '71'){
+                ctx.strokeStyle = 'green'
+            }
+
+            if (e.keyCode == '82'){
+                ctx.strokeStyle = 'red'
+            }
+
+            if (e.keyCode == '89'){
+                ctx.strokeStyle = 'yellow'
+            }
+
+            if (e.keyCode == '38'){
+                ctx.lineWidth++
+            }
+
+            if (e.keyCode == '40'){
+                ctx.lineWidth-- 
+            }
+            
+            if (e.keyCode == '32'){
+                ctx.beginPath();
+                ctx.clearRect(0,0, canvas.width, canvas.height);
+                ctx.closePath();
+            }
+        }
+   </script> 
+</body>
+</html>
